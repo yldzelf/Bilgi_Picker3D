@@ -5,13 +5,18 @@ namespace Data.ValueObjects
 {
    [Serializable]
    
-   public class LevelData
+   public struct LevelData
    {
-       public List<PoolData> PoolList = new List<PoolData>();
+       public List<PoolData> PoolList;
+
+       public LevelData(List<PoolData> datas)
+       {
+           PoolList = datas;
+       }
    }
    [Serializable]
    public struct PoolData
    {
-       public sbyte RequiredObjectCount;
+       public byte RequiredObjectCount;
    } 
 }
