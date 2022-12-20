@@ -5,7 +5,6 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Sirenix.OdinInspector;
-using DG.Tweening;
 
 public class LevelPanelController : MonoBehaviour
 {

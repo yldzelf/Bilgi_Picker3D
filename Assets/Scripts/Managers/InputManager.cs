@@ -28,9 +28,9 @@ namespace Managers
 
         [Space] [ShowInInspector] private bool _isAvailableForTouch, _isFirstTimeTouchTaken, _isTouching;
 
-        private float _currentVelocity; //ref Type
-        private float3 _moveVector; //ref Type
-        private Vector2? _mousePosition; //ref Type
+        private float _currentVelocity; 
+        private float3 _moveVector; 
+        private Vector2? _mousePosition; 
 
         #endregion
 
@@ -123,7 +123,7 @@ namespace Managers
                         {
                           HorizontalInputValue = _moveVector.x,
                           HorizontalInputClampNegativeSide = _data.ClampValues.x,
-                          HorizontalInputClampPositiveSide = _data.ClampValues.x
+                          HorizontalInputClampPositiveSide = _data.ClampValues.y
                          });
                     }
                 }
@@ -163,3 +163,4 @@ namespace Managers
         }
     }
 }
+

@@ -1,3 +1,4 @@
+using Enums;
 using Signals;
 using UnityEngine;
 
@@ -16,9 +17,7 @@ namespace Managers
         #endregion
 
         #region Private Variables
-
-
-
+        
         #endregion
 
         #endregion
@@ -81,6 +80,7 @@ namespace Managers
         {
             CoreGameSignals.Instance.onPlay?.Invoke();
             CoreUISignals.Instance.onClosePanel?.Invoke(1);
+            CameraSignals.Instance.onSetCameraTarget?.Invoke();
         }
 
         private void OnReset()

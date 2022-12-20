@@ -106,8 +106,7 @@ MonoBehaviour:
   m_text: -1000
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b55e1584795e4c44cbd530483359e699, type: 2}
-  m_sharedMaterial: {fileID: 2524076245017955669, guid: b55e1584795e4c44cbd530483359e699,
-    type: 2}
+  m_sharedMaterial: {fileID: 2524076245017955669, guid: b55e1584795e4c44cbd530483359e699, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -392,8 +391,7 @@ MonoBehaviour:
   m_text: 10000
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b55e1584795e4c44cbd530483359e699, type: 2}
-  m_sharedMaterial: {fileID: 2524076245017955669, guid: b55e1584795e4c44cbd530483359e699,
-    type: 2}
+  m_sharedMaterial: {fileID: 2524076245017955669, guid: b55e1584795e4c44cbd530483359e699, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -468,7 +466,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7282406559574445234}
-  - component: {fileID: 7550189686495969071}
+  - component: {fileID: 1397080477871348313}
   m_Layer: 5
   m_Name: LevelPanel
   m_TagString: Untagged
@@ -496,7 +494,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &7550189686495969071
+--- !u!114 &1397080477871348313
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -505,7 +503,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7282406559574445235}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0ea113fd9121d84daf8dc6144b6a58c, type: 3}
+  m_Script: {fileID: 11500000, guid: db4e6681514b6dc4ca041f4d1a14a319, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   levelTexts:

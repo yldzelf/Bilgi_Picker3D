@@ -2,6 +2,7 @@ using UnityEngine.UI;
 using Managers;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using Enums;
 
 public class UIEventSubscriber : MonoBehaviour
 {

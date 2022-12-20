@@ -1,16 +1,15 @@
-using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
 using Enums;
 using Signals;
-using UnityEngine;
 using Sirenix.OdinInspector;
+using UnityEngine;
 
 namespace Controllers
 {
     public class UIPanelController : MonoBehaviour
     {
-        #region Self Varibles
+        #region Self Variables
 
         #region Serialized Variables
 
@@ -19,6 +18,7 @@ namespace Controllers
         #endregion
 
         #endregion
+
 
         private void OnEnable()
         {
@@ -30,31 +30,28 @@ namespace Controllers
             CoreUISignals.Instance.onOpenPanel += OnOpenPanel;
             CoreUISignals.Instance.onClosePanel += OnClosePanel;
             CoreUISignals.Instance.onCloseAllPanels += OnCloseAllPanels;
-
         }
 
-        private void UnSubscribeEvents()
+        private void UnsubscribeEvents()
         {
             CoreUISignals.Instance.onOpenPanel -= OnOpenPanel;
             CoreUISignals.Instance.onClosePanel -= OnClosePanel;
             CoreUISignals.Instance.onCloseAllPanels -= OnCloseAllPanels;
-
         }
 
         private void OnDisable()
         {
-            UnSubscribeEvents();
+            UnsubscribeEvents();
         }
 
-        //[Button("OnOpenPanel")]
-
+        [Button("OnOpenPanel")]
         private void OnOpenPanel(UIPanelTypes type, int layerValue)
         {
-            Instantiate(Resources.Load<GameObject>($"Screen/{type}Panel"), layers[layerValue]);
+            OnClosePanel(layerValue);
+            Instantiate(Resources.Load<GameObject>($"Screens/{type}Panel"), layers[layerValue]);
         }
 
-        //[Button("OnClosePanel")]
-
+        [Button("OnClosePanel")]
         private void OnClosePanel(int layerValue)
         {
             if (layers[layerValue].childCount > 0)
@@ -63,14 +60,13 @@ namespace Controllers
             }
         }
 
-        //[Button("OnCloseAllPanel")]
+        [Button("OnCloseAllPanel")]
         private void OnCloseAllPanels()
         {
             foreach (var t in layers.Where(t => t.childCount > 0))
             {
                 Destroy(t.GetChild(0).gameObject);
             }
-
         }
     }
 }
