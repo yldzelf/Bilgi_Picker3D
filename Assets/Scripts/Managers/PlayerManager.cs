@@ -1,3 +1,4 @@
+using Commands.Player;
 using Controllers.Player;
 using Data.UnityObjects;
 using Data.ValueObjects;
@@ -15,6 +16,8 @@ namespace Managers
         #region Public Variables
 
         public byte StageValue = 0;
+
+        internal ForceBallsToPoolCommand ForceCommand;
 
         #endregion
 
@@ -38,6 +41,12 @@ namespace Managers
         {
             _data = GetPlayerData();
             SendDataToControllers();
+            Init();
+        }
+
+        private void Init()
+        {
+            ForceCommand = new ForceBallsToPoolCommand(this, _data.MovementData);
         }
 
         private PlayerData GetPlayerData()
@@ -58,7 +67,6 @@ namespace Managers
 
         private void SubscribeEvents()
         {
-
             InputSignals.Instance.onInputTaken += OnInputTaken;
             InputSignals.Instance.onInputReleased += OnInputReleased;
             InputSignals.Instance.onInputDragged += OnInputDragged;
@@ -66,6 +74,7 @@ namespace Managers
             CoreGameSignals.Instance.onLevelSuccessful += OnLevelSuccessful;
             CoreGameSignals.Instance.onLevelFailed += OnLevelFailed;
             CoreGameSignals.Instance.onStageAreaEntered += OnStageAreaEntered;
+            CoreGameSignals.Instance.onFinishAreaEntered += OnFinishAreaEntered;
             CoreGameSignals.Instance.onStageAreaSuccessful += OnStageAreaSuccessful;
             CoreGameSignals.Instance.onReset += OnReset;
         }
@@ -79,6 +88,7 @@ namespace Managers
             CoreGameSignals.Instance.onLevelSuccessful -= OnLevelSuccessful;
             CoreGameSignals.Instance.onLevelFailed -= OnLevelFailed;
             CoreGameSignals.Instance.onStageAreaEntered -= OnStageAreaEntered;
+            CoreGameSignals.Instance.onFinishAreaEntered -= OnFinishAreaEntered;
             CoreGameSignals.Instance.onStageAreaSuccessful -= OnStageAreaSuccessful;
             CoreGameSignals.Instance.onReset -= OnReset;
         }
@@ -93,16 +103,16 @@ namespace Managers
             movementController.IsReadyToPlay(true);
         }
 
-        private void OnInputTaken ()
+        private void OnInputTaken()
         {
             movementController.IsReadyToMove(true);
         }
 
-        private void OnInputDragged(HorizontalInputParams inputParams)
+        private void OnInputDragged(HorizontalnputParams inputParams)
         {
             movementController.UpdateInputParams(inputParams);
         }
-        
+
         private void OnInputReleased()
         {
             movementController.IsReadyToMove(false);
@@ -112,20 +122,29 @@ namespace Managers
         {
             movementController.IsReadyToPlay(false);
         }
+
         private void OnLevelFailed()
         {
             movementController.IsReadyToPlay(false);
         }
+
         private void OnStageAreaEntered()
         {
             movementController.IsReadyToPlay(false);
         }
+
         private void OnStageAreaSuccessful(int value)
         {
-            StageValue = (byte)++value;
+            StageValue = (byte) ++value;
             movementController.IsReadyToPlay(true);
+            meshController.ScaleUpPlayer();
+            meshController.ShowUpText();
         }
-        
+
+        private void OnFinishAreaEntered()
+        {
+            movementController.IsReadyToPlay(false);
+        }
 
         private void OnReset()
         {
