@@ -1,0 +1,6 @@
+As a Minigame I've tried to create sticky blocks, there are two extra scripts CollectedObjController, FirstPlayer and some lines have
+been added to PlayerManager script. Unfortunately, I am having problems with the colliders and rigidbodies so the minigame does not work...
+
+PS. Win panel works just fine, I've just placed "StageArea" at the end of the road which is the minigame.
+
+:( 

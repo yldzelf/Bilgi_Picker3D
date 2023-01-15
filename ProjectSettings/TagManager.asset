@@ -10,6 +10,9 @@ TagManager:
   - MiniGame
   - StageArea
   - PoolArea
+  - CollectibleObj
+  - Obstacle
+  - Ground
   layers:
   - Default
   - TransparentFX

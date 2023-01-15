@@ -5,6 +5,9 @@ using Data.ValueObjects;
 using Keys;
 using Signals;
 using Sirenix.OdinInspector;
+using System.Collections.Generic;
+using Enums;
+using Minigame;
 using UnityEngine;
 
 namespace Managers
@@ -18,6 +21,13 @@ namespace Managers
         public byte StageValue = 0;
 
         internal ForceBallsToPoolCommand ForceCommand;
+        
+        //
+        public List<GameObject> collidedList;
+        public Transform playerTransform;
+        public GameStates _isReadyToMove;
+        //public GameStates levelState;
+        //
 
         #endregion
 
@@ -64,6 +74,17 @@ namespace Managers
         {
             SubscribeEvents();
         }
+        
+        //
+        public void CallMakeSphere () {
+            foreach (GameObject obj in collidedList) {
+                obj.GetComponent<CollectedObjController>().MakeSphere();
+            }
+            {
+            
+            }
+        }
+        //
 
         private void SubscribeEvents()
         {
@@ -108,7 +129,7 @@ namespace Managers
             movementController.IsReadyToMove(true);
         }
 
-        private void OnInputDragged(HorizontalnputParams inputParams)
+        private void OnInputDragged(HorizontalInputParams inputParams)
         {
             movementController.UpdateInputParams(inputParams);
         }
